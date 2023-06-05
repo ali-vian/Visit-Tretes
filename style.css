@@ -41,7 +41,6 @@ nav a:hover {
   padding: 2px;
 }
 .garis {
-  transition: 0.5s;
   width: 24px;
   height: 4px;
   border-radius: 2px;
@@ -54,18 +53,6 @@ nav a:hover {
   color: goldenrod;
   transform: scale(1.2);
 }
-.buka .garis:nth-child(1) {
-  transform-origin: 0 0;
-  transform: rotate(45deg);
-}
-.buka .garis:nth-child(2) {
-  opacity: 0;
-}
-.buka .garis:nth-child(3) {
-  transform: rotate(-45deg);
-  transform-origin: 0 100%;
-}
-
 /* ------------------ End Navigasi --------------- */
 
 /* ----------------- Start Main ----------------- */
@@ -208,16 +195,54 @@ div a {
 #galeri h1 {
   text-align: center;
 }
-.foto img {
-  width: 350px;
-  margin: 20px;
+.kotak img {
+  width: 280px;
+  height: 180px;
+  cursor: pointer;
 }
 .foto {
   width: 100%;
-  margin: 50px 0px;
+  margin: 50px 0;
+  gap: 50px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+}
+.kotakBesar {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 99;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 100%;
+  padding: 10vw;
+}
+
+.kotakBesar img {
+  max-height: 80%;
+  max-width: 80%;
+}
+
+.close {
+  position: absolute;
+  margin: 10vh 10vw;
+  top: 0%;
+  right: 0%;
+  color: #fff;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.prev,
+.next {
+  font-size: 30px;
+  color: #fff;
+  cursor: pointer;
 }
 
 /* ------------End Galery---------- */
@@ -338,10 +363,6 @@ div a {
   color: white;
   flex-wrap: wrap;
 }
-.countainer-contact iframe {
-  width: 310px;
-  height: 200px;
-}
 .countainer-contact {
   margin-bottom: 5%;
 }
@@ -445,6 +466,9 @@ div a {
   /* ------------Galery--------------- */
   #galeri .foto img {
     width: 90%;
+  }
+  .close {
+    margin-top: 20vh;
   }
   /* ---------------Event--------------- */
   #event {

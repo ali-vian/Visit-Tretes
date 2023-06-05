@@ -22,13 +22,14 @@ function out() {
 
 // Hover Galery
 const gambar = document.querySelectorAll("#galeri .foto img");
+const kata = document.getElementById("coba");
 
 for (let i = 0; i < gambar.length; i++) {
   gambar[i].addEventListener("mouseover", bulat);
   gambar[i].addEventListener("mouseout", normal);
   function bulat() {
-    gambar[i].style.borderRadius = "50px";
-    gambar[i].style.filter = "brightness(150%)";
+    gambar[i].style.scale = "1.1";
+    gambar[i].style.transition = "all 0.2s ease-in-out";
   }
   function normal() {
     gambar[i].style = "";
@@ -60,7 +61,6 @@ const sidebar = document.querySelector(".sidebar");
 
 toggleSidebar.addEventListener("click", () => {
   sidebar.classList.toggle("sidebar-open");
-  toggleSidebar.classList.toggle("buka");
 });
 
 // Warna Navbar
@@ -91,13 +91,13 @@ function setTimer(target, text) {
 
     if (selisih <= 0) {
       clearInterval(countdown);
-      text.innerHTML = "Expired !!!";
+      text.innerHTML = "Acara telah selesai";
     }
   }, 1000);
 }
 
-const target = new Date("July 1, 2023 16:12:00").getTime();
-const target1 = new Date("Maret 1, 2024 12:11:50").getTime();
+const target = new Date("April 1, 2023 16:12:00").getTime();
+const target1 = new Date("May 1, 2023 12:11:50").getTime();
 const text = document.getElementById("waktu1");
 const text1 = document.getElementById("waktu2");
 setTimer(target, text);
@@ -119,3 +119,39 @@ fetch(
     let angin = document.querySelector("#angin");
     angin.innerHTML = "Kecepatan Angin : " + data.wind.speed + " km/h";
   });
+
+// Zoom Out
+
+const kotakBesar = document.querySelector(".kotakBesar");
+const imgBesar = document.getElementById("imgBesar");
+const listGambar = [
+  "img/img-01.jpg",
+  "img/img-02.jpg",
+  "img/img-03.jpg",
+  "img/img-04.jpg",
+  "img/img-05.jpg",
+  "img/img-06.jpg",
+];
+
+function zoomOut(imgUrl) {
+  ind = listGambar.indexOf(imgUrl);
+  kotakBesar.style.display = "flex";
+  imgBesar.src = imgUrl;
+}
+
+function closeImg() {
+  kotakBesar.style.display = "none";
+}
+
+let ind;
+function changeImage(n) {
+  ind += n;
+
+  if (ind >= listGambar.length) {
+    ind = 0;
+  }
+  if (ind < 0) {
+    ind = listGambar.length - 1;
+  }
+  imgBesar.src = listGambar[ind];
+}
